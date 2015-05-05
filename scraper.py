@@ -19,13 +19,15 @@ for x in url:
                 nom = content.xpath('//div[contains(@class,"i-project")]/a')
                 #porteur_projet = content.xpath('//p[contains(@class,"creator")]/a')
                 porteur_projet = content.xpath('//p[contains(@class,"creator")]/span/a')
-                details = content.xpath('//p[contains(@class,"description")]')
+                #details = content.xpath('//p[contains(@class,"description")]')
+                details = content.xpath('//div[contains(@class,"i-tagline")]')
                 stats = content.xpath('//span[contains(@id,"project-stats-funding-pct")]')
                 montant = content.xpath('//span[contains(@class,"currency currency-medium")]/span')
                 #lien = content.xpath('//div[contains(@class,"project-details")]/a[@href]')
                 lien = content.xpath('//div[contains(@class,"i-project")]/a[@href]')
                 print 'lien: ' + str(lien)
-                for karazana,projet,olona,deta,marika,vola,rohy in zip(categorie,nom,porteur_projet,details,stats,montant,lien):
+                for detail_item, rohy in zip(details, lien):
+                #for karazana,projet,olona,deta,marika,vola,rohy in zip(categorie,nom,porteur_projet,details,stats,montant,lien):
             #print olona.text,asa.text,deta.text,marika.text,vola.text
                     data = {
                                 'Categorie': karazana.text,
