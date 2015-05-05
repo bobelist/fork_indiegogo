@@ -11,6 +11,7 @@ for x in url:
         for i in range(1,4):
             try:
                 url = x+str(i)
+                print 'url: ' + str(url)
                 root = scraperwiki.scrape(url)
                 content = lxml.html.etree.HTML(root)
                 categorie = content.xpath('//div[contains(@class,"project-category")]')
