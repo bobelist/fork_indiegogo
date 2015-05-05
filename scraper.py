@@ -35,6 +35,7 @@ for x in url:
                                 'date' : datetime.datetime.now()
                             }
                     scraperwiki.sqlite.save(unique_keys=['Projet'], data=data)
+                    print 'project:' + projet.text
 
 
             except:
