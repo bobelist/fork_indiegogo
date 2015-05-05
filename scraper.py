@@ -25,19 +25,19 @@ for x in url:
                 montant = content.xpath('//span[contains(@class,"currency currency-medium")]/span')
                 #lien = content.xpath('//div[contains(@class,"project-details")]/a[@href]')
                 lien = content.xpath('//div[contains(@class,"i-project")]/a[@href]')
-                print 'lien: ' + str(lien)
+                print 'details: ' + str(details) + ', lien: ' + str(lien) 
                 for detail_item, rohy in zip(details, lien):
                 #for karazana,projet,olona,deta,marika,vola,rohy in zip(categorie,nom,porteur_projet,details,stats,montant,lien):
             #print olona.text,asa.text,deta.text,marika.text,vola.text
                     data = {
-                                'Categorie': karazana.text,
-                                'Projet' : projet.text,
-                                'Nom du porteur': olona.text,
-                                'details': deta.text,
-                                'statistique': marika.text,
-                                'montant obtenu': vola.text,
+                                #'Categorie': karazana.text,
+                                #'Projet' : projet.text,
+                                #'Nom du porteur': olona.text,
+                                'details': detail_item.text,
+                                #'statistique': marika.text,
+                                #'montant obtenu': vola.text,
                                 'lien':  "http://www.indiegogo.com"+rohy.attrib.get('href'),
-                                'date' : datetime.datetime.now()
+                                #'date' : datetime.datetime.now()
                             }
                     scraperwiki.sqlite.save(unique_keys=['Projet'], data=data)
                     print 'project:' + projet.text
